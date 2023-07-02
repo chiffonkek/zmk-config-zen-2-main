@@ -121,21 +121,25 @@
             timeout-ms = <50>;
             key-positions = <30 31>;
             bindings = <&to 1>;
+            global-quick-tap-ms = <75>;
         };
         combo_LYR2 {
             timeout-ms = <50>;
             key-positions = <30 32>;
             bindings = <&to 2>;
+            global-quick-tap-ms = <75>;
         };
         combo_LYR3 {
             timeout-ms = <50>;
             key-positions = <33 34 35>;
             bindings = <&to 3>;
+            global-quick-tap-ms = <75>;
         };
         combo_STENO {
             timeout-ms = <50>;
             key-positions = <30 31 32>;
-            bindings = <&tog 4>;         
+            bindings = <&tog 4>;   
+            global-quick-tap-ms = <75>;
         };
 
         combo_CAPS {
@@ -143,64 +147,74 @@
             key-positions = <13 16>;
             bindings = <&kp CAPS>;
             layers = <0>;
+            global-quick-tap-ms = <75>;
         };
         combo_bspc {
-            timeout-ms = <45>;
+            timeout-ms = <50>;
             key-positions = <8 9>;
             bindings = <&kp BKSP>;
             layers = <0 1>;
+            global-quick-tap-ms = <75>;
         };
         combo_tab {
-            timeout-ms = <45>;
+            timeout-ms = <50>;
             key-positions = <0 1>;
             bindings = <&kp TAB>;
             layers = <0 1>;
+            global-quick-tap-ms = <75>;
         };
         combo_esc {
-            timeout-ms = <45>;
+            timeout-ms = <50>;
             key-positions = <1 2>;
             bindings = <&gresc>;
             layers = <0 1>;
+            global-quick-tap-ms = <75>;
         };
         combo_wordleft {
             timeout-ms = <60>;
             key-positions = <16 17>;
             bindings = <&kp LC(LEFT)>;
             layers = <0>;
+            global-quick-tap-ms = <75>;
         };    
         combo_wordright {
             timeout-ms = <60>;
             key-positions = <17 18>;
             bindings = <&kp LC(RIGHT)>;
-            layers = <0>;            
+            layers = <0>;     
+            global-quick-tap-ms = <75>;
         };
         
         combo_home {
             timeout-ms = <60>;
             key-positions = <7 16>;
             bindings = <&kp HOME>;
-            layers = <0>;            
+            layers = <0>;  
+            global-quick-tap-ms = <75>;
         };     
         
         combo_end {
             timeout-ms = <60>;
             key-positions = <7 18>;
             bindings = <&kp END>;
-            layers = <0>;            
+            layers = <0>;  
+            global-quick-tap-ms = <75>;
         };         
         
         combo_pgup {
-            timeout-ms = <60>;
+            timeout-ms = <100>;
             key-positions = <7 16 18>;
             bindings = <&kp PG_UP>;
-            layers = <0>;            
+            layers = <0>;  
+            global-quick-tap-ms = <75>;
         };   
         
         combo_pgdown {
             timeout-ms = <60>;
             key-positions = <16 17 18>;
             bindings = <&kp PG_DN>;
-            layers = <0>;            
+            layers = <0>;   
+            global-quick-tap-ms = <75>;
         };
                 
     };
