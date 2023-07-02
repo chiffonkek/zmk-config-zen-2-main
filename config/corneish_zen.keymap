@@ -105,28 +105,28 @@
                 label = "Homerow GUI-Four";
                 #binding-cells = <0>;
                 tapping-term-ms = <170>;
-                bindings = <&hm LGUI N4>, <&kp DOLLAR>;
+                bindings = <&hm_l LGUI N4>, <&kp DOLLAR>;
             };
         tdhmfive: Homerow-Mod-Tap-Dance-Five {
                 compatible = "zmk,behavior-tap-dance";
                 label = "Homerow GUI-Five";
                 #binding-cells = <0>;
                 tapping-term-ms = <170>;
-                bindings = <&hm LALT N5>, <&kp PERCENT>;
+                bindings = <&hm_l LALT N5>, <&kp PERCENT>;
             };
         tdhmsix: Homerow-Mod-Tap-Dance-Six {
                 compatible = "zmk,behavior-tap-dance";
                 label = "Homerow GUI-Six";
                 #binding-cells = <0>;
                 tapping-term-ms = <170>;
-                bindings = <&hm LCTRL N6>, <&kp CARET>;
+                bindings = <&hm_l LCTRL N6>, <&kp CARET>;
             };
         tdhmmin: Homerow-Mod-Tap-Dance-Minus {
                 compatible = "zmk,behavior-tap-dance";
                 label = "Homerow Shift-Minus";
                 #binding-cells = <0>;
                 tapping-term-ms = <170>;
-                bindings = <&hm LSHFT MINUS>, <&kp UNDER>;
+                bindings = <&hm_l LSHFT MINUS>, <&kp UNDER>;
             };     
             
            
@@ -135,7 +135,7 @@
                 label = "Homerow Bracket-GUI";
                 #binding-cells = <0>;
                 tapping-term-ms = <170>;
-                bindings = <&hm RGUI LBKT>, <&as LS(RBKT) RBKT>;
+                bindings = <&hm_r RGUI LBKT>, <&as LS(RBKT) RBKT>;
             };
 
 
