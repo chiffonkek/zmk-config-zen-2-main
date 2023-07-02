@@ -278,7 +278,7 @@
             bindings = <&kp PG_DN>;
             layers = <0>;            
         };        
-                
+      };         
     };
         keymap {
                 compatible = "zmk,keymap";
