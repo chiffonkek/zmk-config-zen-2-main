@@ -59,7 +59,7 @@
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick-tap-ms = <175>;                // repeat on tap-into-hold
-            global-quick-tap-ms = <150>;         // requires PR #1387
+            global-quick-tap-ms = <100>;         // requires PR #1387
             hold-trigger-key-positions = <KEYS_R KEYS_T>;
             hold-trigger-on-release;             // requires PR #1423
         };
@@ -73,7 +73,38 @@
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM>;
             quick_tap_ms = <175>;
-            global-quick-tap-ms = <150>;         // requires PR #1387
+            global-quick-tap-ms = <100>;         // requires PR #1387
+            hold-trigger-key-positions = <KEYS_L KEYS_T>;
+            hold-trigger-on-release;             // requires PR #1423
+        };
+
+ // Positional Homerow mods for shift
+        // Use faster tapping term and disable some features that may
+        // cause false negatives.
+        hm_shift_l: hm_shift_l {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS_FAST_LEFT";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+
+            flavor = "balanced";
+            tapping-term-ms = <HM_TAPPING_TERM_FAST>;
+            quick_tap_ms = <175>;
+            // global-quick-tap-ms = <100>;         // requires PR #1387
+            hold-trigger-key-positions = <KEYS_R KEYS_T>;
+            hold-trigger-on-release;             // requires PR #1423
+        };
+
+        hm_shift_r: hm_shift_r {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS_FAST_RIGHT";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+
+            flavor = "balanced";
+            tapping-term-ms = <HM_TAPPING_TERM_FAST>;
+            quick_tap_ms = <175>;
+            // global-quick-tap-ms = <100>;         // requires PR #1387
             hold-trigger-key-positions = <KEYS_L KEYS_T>;
             hold-trigger-on-release;             // requires PR #1423
         };
@@ -126,7 +157,7 @@
                 label = "Homerow Shift-Minus";
                 #binding-cells = <0>;
                 tapping-term-ms = <170>;
-                bindings = <&hm_l LSHFT MINUS>, <&kp UNDER>;
+                bindings = <&hm_shift_l LSHFT MINUS>, <&kp UNDER>;
             };     
             
            
@@ -217,6 +248,39 @@
             layers = <0 1>;
             global-quick-tap-ms = <75>;
         };
+
+        combo_AT {
+            timeout-ms = <50>;
+            key-positions = <1 11>;
+            bindings = <&kp AT>;
+            layers = <0>;
+            global-quick-tap-ms = <75>;
+        };
+
+        combo_GRAVE {
+            timeout-ms = <50>;
+            key-positions = <11 21>;
+            bindings = <&kp GRAVE>;
+            layers = <0>;
+            global-quick-tap-ms = <75>;
+        };
+
+        combo_HASH {
+            timeout-ms = <50>;
+            key-positions = <2 12>;
+            bindings = <&kp HASH>;
+            layers = <0>;
+            global-quick-tap-ms = <75>;
+        };
+
+        combo_EQUAL {
+            timeout-ms = <50>;
+            key-positions = <13 23>;
+            bindings = <&kp EQUAL>;
+            layers = <0>;
+            global-quick-tap-ms = <75>;
+        };
+
         combo_wordleft {
             timeout-ms = <60>;
             key-positions = <16 17>;
@@ -276,10 +340,10 @@
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         bindings = <
-   &kp Q        &kp W        &kp E         &kp R         &kp T          &kp Y &kp U           &kp I          &kp O         &kp P
-   &hm_l LGUI A &hm_l LALT S &hm_l LCTRL D &hm_l LSHFT F &kp G          &kp H &hm_r RSHFT J   &hm_r RCTRL K  &hm_r LALT L  &tdhmbkt
-   &kp Z        &kp X        &kp C         &kp V         &kp B          &kp N &kp M           &tdcb          &tdds         &tdqs
-                   &to 0 &lt 2 RET &lt 1 SPC                                    &lt 2 RET &lt 1 SPC &mo 3
+   &kp Q        &kp W        &kp E         &kp R               &kp T          &kp Y &kp U                 &kp I          &kp O         &kp P
+   &hm_l LGUI A &hm_l LALT S &hm_l LCTRL D &hm_shift_l LSHFT F &kp G          &kp H &hm_shift_r RSHFT J   &hm_r RCTRL K  &hm_r LALT L  &tdhmbkt
+   &kp Z        &kp X        &kp C         &kp V               &kp B          &kp N &kp M                 &tdcb          &tdds         &tdqs
+                   &to 0 &lt 2 RET &lt 1 SPC                                         &lt 2 RET &lt 1 SPC &mo 3
                         >;
                 };
                 numnav_layer {
@@ -290,10 +354,10 @@
 // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   AS(N7)       AS(N8)       AS(N9)        AS(N0)    &kp LC(X)           &kp HOME    &kp PG_UP         &kp UP            &kp PG_DN         &kp END
-   &tdhmfour    &tdhmfive    &tdhmsix      &tdhmmin  &kp LC(C)           &kp INS     &hm_r RSHFT LEFT  &hm_r RCTRL DOWN  &hm_r RALT RIGHT  &trans
-   AS(N1)       AS(N2)       AS(N3)        AS(EQUAL) &kp LC(V)           &kp DEL     &kp PSCRN         &trans            &trans            &trans
-                   &to 0 &trans &trans                                        &trans &trans &to 0
+   AS(N7)       AS(N8)       AS(N9)        AS(N0)    &kp LC(X)           &kp HOME    &kp PG_UP               &kp UP            &kp PG_DN         &kp END
+   &tdhmfour    &tdhmfive    &tdhmsix      &tdhmmin  &kp LC(C)           &kp INS     &hm_shift_r RSHFT LEFT  &hm_r RCTRL DOWN  &hm_r RALT RIGHT  &trans
+   AS(N1)       AS(N2)       AS(N3)        AS(EQUAL) &kp LC(V)           &kp DEL     &kp PSCRN               &trans            &trans            &trans
+                   &to 0 &trans &trans                                            &trans &trans &to 0
                         >;
                 };
 
