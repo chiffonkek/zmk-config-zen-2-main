@@ -4,6 +4,12 @@
 #include <dt-bindings/zmk/outputs.h>
 #include "../zmk-nodefree-config/helper.h"
 #include "../../zmk-nodefree-config/keypos_def/keypos_36keys.h"
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
+#define KEYS_T LH2 LH1 LH0 RH0 RH1 RH2
+
+#define HM_TAPPING_TERM 300
+#define HM_TAPPING_TERM_FAST 200
 
     &sk {
     release-after-ms = <2000>;
@@ -33,6 +39,75 @@
 / {
 
     behaviors {
+// Positional Homerow mods
+        // Homerow mods that prevent accidental activations when rolling keys,
+        // such as when typing `st` or `ne` on colemak-dh layouts or `as` on
+        // qwerty.
+        //
+        // Works by only allowing a mod to activate within tapping-term if
+        // it's on the opposite side of the keyboard or on the same side thumb
+        // keys.
+
+        // Further optimization using urob's timerless homerow mods method:
+        // https://github.com/urob/zmk-config#timeless-homerow-mods
+        hm_l: homerow_mods_left {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS_LEFT";
+            #binding-cells = <2>;
+            bindings = <&kp>,  <&kp>;
+
+            flavor = "balanced";
+            tapping-term-ms = <HM_TAPPING_TERM>;
+            quick-tap-ms = <175>;                // repeat on tap-into-hold
+            global-quick-tap-ms = <100>;         // requires PR #1387
+            hold-trigger-key-positions = <KEYS_R KEYS_T>;
+            hold-trigger-on-release;             // requires PR #1423
+        };
+
+        hm_r: homerow_mods_right {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS_RIGHT";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+
+            flavor = "balanced";
+            tapping-term-ms = <HM_TAPPING_TERM>;
+            quick_tap_ms = <175>;
+            global-quick-tap-ms = <100>;         // requires PR #1387
+            hold-trigger-key-positions = <KEYS_L KEYS_T>;
+            hold-trigger-on-release;             // requires PR #1423
+        };
+
+ // Positional Homerow mods for shift
+        // Use faster tapping term and disable some features that may
+        // cause false negatives.
+        hm_shift_l: hm_shift_l {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS_FAST_LEFT";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+
+            flavor = "balanced";
+            tapping-term-ms = <HM_TAPPING_TERM_FAST>;
+            quick_tap_ms = <175>;
+            // global-quick-tap-ms = <100>;         // requires PR #1387
+            hold-trigger-key-positions = <KEYS_R KEYS_T>;
+            hold-trigger-on-release;             // requires PR #1423
+        };
+
+        hm_shift_r: hm_shift_r {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS_FAST_RIGHT";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+
+            flavor = "balanced";
+            tapping-term-ms = <HM_TAPPING_TERM_FAST>;
+            quick_tap_ms = <175>;
+            // global-quick-tap-ms = <100>;         // requires PR #1387
+            hold-trigger-key-positions = <KEYS_L KEYS_T>;
+            hold-trigger-on-release;             // requires PR #1423
+        };
     
         as: auto_shift {
                 compatible = "zmk,behavior-hold-tap";
@@ -44,15 +119,16 @@
                 bindings = <&kp>, <&kp>;
             };
             
-        hm: homerow_mods {
-                compatible = "zmk,behavior-hold-tap";
-                label = "HOMEROW_MODS";
-                #binding-cells = <2>;
-                tapping_term_ms = <170>;
-                quick_tap_ms = <200>;
-                flavor = "tap-preferred";
-                bindings = <&kp>, <&kp>;
-            };
+     //   hm: homerow_mods {
+     //           compatible = "zmk,behavior-hold-tap";
+     //           label = "HOMEROW_MODS";
+     //           #binding-cells = <2>;
+     //           tapping_term_ms = <170>;
+     //           quick_tap_ms = <200>;
+     //           flavor = "tap-preferred";
+     //           bindings = <&kp>, <&kp>;
+     //       };
+     // Testing urob HRM
             
             
        tdhmfour: Homerow-Mod-Tap-Dance-Four {
@@ -60,28 +136,28 @@
                 label = "Homerow GUI-Four";
                 #binding-cells = <0>;
                 tapping-term-ms = <170>;
-                bindings = <&hm LGUI N4>, <&kp DOLLAR>;
+                bindings = <&hm_l LGUI N4>, <&kp DOLLAR>;
             };
         tdhmfive: Homerow-Mod-Tap-Dance-Five {
                 compatible = "zmk,behavior-tap-dance";
                 label = "Homerow GUI-Five";
                 #binding-cells = <0>;
                 tapping-term-ms = <170>;
-                bindings = <&hm LALT N5>, <&kp PERCENT>;
+                bindings = <&hm_l LALT N5>, <&kp PERCENT>;
             };
         tdhmsix: Homerow-Mod-Tap-Dance-Six {
                 compatible = "zmk,behavior-tap-dance";
                 label = "Homerow GUI-Six";
                 #binding-cells = <0>;
                 tapping-term-ms = <170>;
-                bindings = <&hm LCTRL N6>, <&kp CARET>;
+                bindings = <&hm_l LCTRL N6>, <&kp CARET>;
             };
         tdhmmin: Homerow-Mod-Tap-Dance-Minus {
                 compatible = "zmk,behavior-tap-dance";
                 label = "Homerow Shift-Minus";
                 #binding-cells = <0>;
                 tapping-term-ms = <170>;
-                bindings = <&hm LSHFT MINUS>, <&kp UNDER>;
+                bindings = <&hm_shift_l LSHFT MINUS>, <&kp UNDER>;
             };     
             
            
@@ -90,7 +166,7 @@
                 label = "Homerow Bracket-GUI";
                 #binding-cells = <0>;
                 tapping-term-ms = <170>;
-                bindings = <&hm RGUI LBKT>, <&as LS(RBKT) RBKT>;
+                bindings = <&hm_r RGUI LBKT>, <&as LS(RBKT) RBKT>;
             };
 
 
@@ -172,6 +248,39 @@
             layers = <0 1>;
             global-quick-tap-ms = <75>;
         };
+
+        combo_AT {
+            timeout-ms = <50>;
+            key-positions = <1 11>;
+            bindings = <&kp AT>;
+            layers = <0>;
+            global-quick-tap-ms = <75>;
+        };
+
+        combo_GRAVE {
+            timeout-ms = <50>;
+            key-positions = <11 21>;
+            bindings = <&kp GRAVE>;
+            layers = <0>;
+            global-quick-tap-ms = <75>;
+        };
+
+        combo_HASH {
+            timeout-ms = <50>;
+            key-positions = <2 12>;
+            bindings = <&kp HASH>;
+            layers = <0>;
+            global-quick-tap-ms = <75>;
+        };
+
+        combo_EQUAL {
+            timeout-ms = <50>;
+            key-positions = <13 23>;
+            bindings = <&kp EQUAL>;
+            layers = <0>;
+            global-quick-tap-ms = <75>;
+        };
+
         combo_wordleft {
             timeout-ms = <60>;
             key-positions = <16 17>;
@@ -231,10 +340,10 @@
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         bindings = <
-   &kp Q      &kp W      &kp E       &kp R       &kp T          &kp Y &kp U         &kp I        &kp O       &kp P
-   &hm LGUI A &hm LALT S &hm LCTRL D &hm LSHFT F &kp G          &kp H &hm RSHFT J   &hm RCTRL K  &hm LALT L  &tdhmbkt
-   &kp Z      &kp X      &kp C       &kp V       &kp B          &kp N &kp M         &tdcb        &tdds       &tdqs
-                   &to 0 &lt 2 RET &lt 1 SPC                                    &lt 2 RET &lt 1 SPC &mo 3
+   &kp Q        &kp W        &kp E         &kp R               &kp T          &kp Y &kp U                 &kp I          &kp O         &kp P
+   &hm_l LGUI A &hm_l LALT S &hm_l LCTRL D &hm_shift_l LSHFT F &kp G          &kp H &hm_shift_r RSHFT J   &hm_r RCTRL K  &hm_r LALT L  &tdhmbkt
+   &kp Z        &kp X        &kp C         &kp V               &kp B          &kp N &kp M                 &tdcb          &tdds         &tdqs
+                   &to 0 &lt 2 RET &lt 1 SPC                                         &lt 2 RET &lt 1 SPC &mo 3
                         >;
                 };
                 numnav_layer {
@@ -245,10 +354,10 @@
 // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   AS(N7)       AS(N8)       AS(N9)        AS(N0)    &kp LC(X)           &kp HOME    &kp PG_UP       &kp UP          &kp PG_DN       &kp END
-   &tdhmfour    &tdhmfive    &tdhmsix      &tdhmmin  &kp LC(C)           &kp INS     &hm RSHFT LEFT  &hm RCTRL DOWN  &hm RALT RIGHT  &trans
-   AS(N1)       AS(N2)       AS(N3)        AS(EQUAL) &kp LC(V)           &kp DEL     &kp PSCRN       &trans          &trans          &trans
-                   &to 0 &trans &trans                                        &trans &trans &to 0
+   AS(N7)       AS(N8)       AS(N9)        AS(N0)    &kp LC(X)           &kp HOME    &kp PG_UP               &kp UP            &kp PG_DN         &kp END
+   &tdhmfour    &tdhmfive    &tdhmsix      &tdhmmin  &kp LC(C)           &kp INS     &hm_shift_r RSHFT LEFT  &hm_r RCTRL DOWN  &hm_r RALT RIGHT  &trans
+   AS(N1)       AS(N2)       AS(N3)        AS(EQUAL) &kp LC(V)           &kp DEL     &kp PSCRN               &trans            &trans            &trans
+                   &to 0 &trans &trans                                            &trans &trans &to 0
                         >;
                 };
 
@@ -260,10 +369,10 @@
 // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &kp F7      &kp F8       &kp F9        &kp F12                       &sk LCTRL  &sk LGUI               &trans  &trans  &trans &trans
-   &hm LGUI F4 &hm LALT F5  &hm LCTRL F6  &hm LSHFT F11                 &sk LALT   &sk LC(LS(LALT))       &trans  &trans  &trans &trans
-   &kp F1      &kp F2       &kp F3        &kp F10                       &sk LSHIFT &sk LC(LS(LA(LGUI)))   &trans  &trans  &trans &trans
-                   &to 0 &trans &trans                                        &trans &trans &to 0
+   &kp F7        &kp F8         &kp F9          &kp F12                         &sk LCTRL  &sk LGUI               &trans  &trans  &trans &trans
+   &hm_l LGUI F4 &hm_l LALT F5  &hm_l LCTRL F6  &hm_l LSHFT F11                 &sk LALT   &sk LC(LS(LALT))       &trans  &trans  &trans &trans
+   &kp F1        &kp F2         &kp F3          &kp F10                         &sk LSHIFT &sk LC(LS(LA(LGUI)))   &trans  &trans  &trans &trans
+                   &to 0 &trans &trans                                                &trans &trans &to 0
                         >;
                 };
                 
