@@ -8,7 +8,7 @@
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
 #define KEYS_T LH2 LH1 LH0 RH0 RH1 RH2
 
-#define HM_TAPPING_TERM 300
+#define HM_TAPPING_TERM 240
 #define HM_TAPPING_TERM_FAST 200
 
     &sk {
@@ -58,10 +58,10 @@
 
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM>;
-            quick-tap-ms = <155>;                // repeat on tap-into-hold
-            global-quick-tap-ms = <135>;         // requires PR #1387
+            quick-tap-ms = <175>;                // repeat on tap-into-hold
+            global-quick-tap-ms = <150>;         // requires PR #1387
             hold-trigger-key-positions = <KEYS_R KEYS_T>;
-            hold-trigger-on-release;             // requires PR #1423
+        //  hold-trigger-on-release;             // requires PR #1423
         };
 
         hm_r: homerow_mods_right {
@@ -72,10 +72,10 @@
 
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM>;
-            quick_tap_ms = <155>;
-            global-quick-tap-ms = <135>;         // requires PR #1387
+            quick_tap_ms = <175>;
+            global-quick-tap-ms = <150>;         // requires PR #1387
             hold-trigger-key-positions = <KEYS_L KEYS_T>;
-            hold-trigger-on-release;             // requires PR #1423
+        // hold-trigger-on-release;             // requires PR #1423
         };
 
  // Positional Homerow mods for shift
@@ -90,7 +90,7 @@
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM_FAST>;
             quick_tap_ms = <175>;
-            // global-quick-tap-ms = <100>;         // requires PR #1387
+            // global-quick-tap-ms = <150>;         // requires PR #1387
             hold-trigger-key-positions = <KEYS_R KEYS_T>;
             hold-trigger-on-release;             // requires PR #1423
         };
@@ -104,7 +104,7 @@
             flavor = "balanced";
             tapping-term-ms = <HM_TAPPING_TERM_FAST>;
             quick_tap_ms = <175>;
-            // global-quick-tap-ms = <100>;         // requires PR #1387
+            // global-quick-tap-ms = <150>;         // requires PR #1387
             hold-trigger-key-positions = <KEYS_L KEYS_T>;
             hold-trigger-on-release;             // requires PR #1423
         };
@@ -128,7 +128,6 @@
      //           flavor = "tap-preferred";
      //           bindings = <&kp>, <&kp>;
      //       };
-     // Testing urob HRM
             
             
        tdhmfour: Homerow-Mod-Tap-Dance-Four {
@@ -341,7 +340,7 @@
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         bindings = <
    &kp Q        &kp W        &kp E         &kp R               &kp T          &kp Y &kp U                 &kp I          &kp O         &kp P
-   &hm_l LGUI A &hm_l LALT S &hm_l LCTRL D &hm_shift_l LSHFT F &kp G          &kp H &hm_shift_r RSHFT J   &hm_r RCTRL K  &hm_r LALT L  &tdhmbkt
+   &hm_l LGUI A &hm_l LALT S &hm_l LCTRL D &hm_shift_l LSHFT F &kp G          &kp H &hm_r RSHFT J   &hm_r RCTRL K       &hm_r LALT L   &tdhmbkt
    &kp Z        &kp X        &kp C         &kp V               &kp B          &kp N &kp M                 &tdcb          &tdds         &tdqs
                    &to 0 &lt 2 RET &lt 1 SPC                                         &lt 2 RET &lt 1 SPC &mo 3
                         >;
