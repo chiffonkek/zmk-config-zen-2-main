@@ -123,6 +123,7 @@
                 label = "AUTO_SHIFT";
                 #binding-cells = <2>;
                 tapping_term_ms = <135>;
+		global-quick-tap-ms = <75>
                 quick_tap_ms = <0>;
                 flavor = "tap-preferred";
                 bindings = <&kp>, <&kp>;
@@ -253,6 +254,38 @@
             timeout-ms = <50>;
             key-positions = <1 2>;
             bindings = <&gresc>;
+            layers = <0 1>;
+            global-quick-tap-ms = <75>;
+        };
+
+        combo_undo {
+            timeout-ms = <50>;
+            key-positions = <20 21>;
+            bindings = <LC(Z)>;
+            layers = <0 1>;
+            global-quick-tap-ms = <75>;
+        };
+
+        combo_cut {
+            timeout-ms = <50>;
+            key-positions = <21 22>;
+            bindings = <LC(X)>;
+            layers = <0 1>;
+            global-quick-tap-ms = <75>;
+        };
+
+        combo_copy {
+            timeout-ms = <50>;
+            key-positions = <22 23>;
+            bindings = <LC(C)>;
+            layers = <0 1>;
+            global-quick-tap-ms = <75>;
+        };
+
+        combo_paste {
+            timeout-ms = <50>;
+            key-positions = <23 24>;
+            bindings = <LC(V)>;
             layers = <0 1>;
             global-quick-tap-ms = <75>;
         };
