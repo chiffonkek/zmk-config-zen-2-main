@@ -108,7 +108,16 @@
             hold-trigger-key-positions = <KEYS_L KEYS_T>;
             hold-trigger-on-release;             // requires PR #1423
         };
-    
+
+        num_word: behavior_num_word {
+			compatible = "zmk,behavior-caps-word";
+			label = "NUM_WORD";
+			#binding-cells = <0>;
+            layers = <NUMNAV>;                                // insert location of numbers layer here
+			continue-list = <BACKSPACE DELETE DOT COMMA SLASH EQUAL PLUS MINUS UP DOWN LEFT RIGHT>;  // adjust as desired
+            ignore-numbers;                                // numbers don't deactivate the layer
+		};  
+
         as: auto_shift {
                 compatible = "zmk,behavior-hold-tap";
                 label = "AUTO_SHIFT";
@@ -342,7 +351,7 @@
    &kp Q        &kp W        &kp E         &kp R               &kp T          &kp Y &kp U                 &kp I          &kp O         &kp P
    &hm_l LGUI A &hm_l LALT S &hm_l LCTRL D &hm_shift_l LSHFT F &kp G          &kp H &hm_r RSHFT J   &hm_r RCTRL K       &hm_r LALT L   &tdhmbkt
    &kp Z        &kp X        &kp C         &kp V               &kp B          &kp N &kp M                 &tdcb          &tdds         &tdqs
-                   &to 0 &lt 2 RET &lt 1 SPC                                         &lt 2 RET &lt 1 SPC &mo 3
+                   &to 0 &lt 2 RET &lt 1 SPC                                         &num_word &lt 1 SPC &mo 3
                         >;
                 };
                 numnav_layer {
