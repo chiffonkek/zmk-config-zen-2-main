@@ -123,7 +123,7 @@
                 label = "AUTO_SHIFT";
                 #binding-cells = <2>;
                 tapping_term_ms = <135>;
-		global-quick-tap-ms = <75>
+		global-quick-tap-ms = <75>;
                 quick_tap_ms = <0>;
                 flavor = "tap-preferred";
                 bindings = <&kp>, <&kp>;
