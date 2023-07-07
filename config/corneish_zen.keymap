@@ -4,9 +4,6 @@
 #include <dt-bindings/zmk/outputs.h>
 #include "../zmk-nodefree-config/helper.h"
 #include "../../zmk-nodefree-config/keypos_def/keypos_36keys.h"
-#include "combos.dtsi"  // requires layer aliases
-#include "mouse.dtsi"
-#include "extra_keys.h"
 
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
@@ -15,19 +12,10 @@
 #define HM_TAPPING_TERM 200
 #define HM_TAPPING_TERM_FAST 200
 
-    &sk {
-    release-after-ms = <2000>;
-            };
-    &gresc {
+
+&gresc {
     keep-mods = <(MOD_LSFT|MOD_RSFT)>;
             };
-
-/ {
-  chosen {
-    //zmk,matrix_transform = &default_transform;
-    zmk,matrix_transform = &five_column_transform;
-  };
-};
 
 &sk {  // sticky-key config
     release-after-ms = <900>;  // release after 0.6s
@@ -49,6 +37,13 @@ ZMK_BEHAVIOR(num_dance, tap_dance,
 &num_word {  // num-word, requires PR #1451
     layers = <NUM>;
     continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
+};
+
+/ {
+  chosen {
+    //zmk,matrix_transform = &default_transform;
+    zmk,matrix_transform = &five_column_transform;
+  };
 };
 
 #define AS(keycode) &as LS(keycode) keycode
