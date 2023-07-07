@@ -17,6 +17,10 @@
     keep-mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
+/* Global settings */
+
+#define QUICK_TAP_MS 175
+
 &sk {  // sticky-key config
     release-after-ms = <900>;  // release after 0.6s
     quick-release;             // no double capitalization when rolling keys
