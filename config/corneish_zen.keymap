@@ -26,8 +26,18 @@
     quick-release;             // no double capitalization when rolling keys
 };
 
+&sl {  // sticky-layer config
+    ignore-modifiers;          // allow chording sticky mods & layers
+};
+
+&lt {  // layer-tap config
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+};
+
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
-#define SMART_NUM &smart_num NUM 0
+#define SMART_NUM &smart_num NUMNAV 1
 ZMK_BEHAVIOR(smart_num, hold_tap,
     flavor = "balanced";
     tapping-term-ms = <200>;
@@ -36,10 +46,10 @@ ZMK_BEHAVIOR(smart_num, hold_tap,
 )
 ZMK_BEHAVIOR(num_dance, tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&num_word>, <&sl NUM>;  // reverse this for sticky-num on single tap
+    bindings = <&num_word>, <&sl NUMNAV>;  // reverse this for sticky-num on single tap
 )
 &num_word {  // num-word, requires PR #1451
-    layers = <NUM>;
+    layers = <NUMNAV>;
     continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
 };
 
