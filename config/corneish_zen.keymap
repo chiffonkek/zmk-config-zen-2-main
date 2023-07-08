@@ -3,8 +3,16 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#include "../../zmk-nodefree-config/keypos_def/keypos_36keys.h"
 #include "../zmk-nodefree-config/helper.h"
+
+#define QWERTY 0
+#define NUMNAV 1
+#define FANDM 2
+#define SYS 3
+#define STENO 4
+
+#include "../../zmk-nodefree-config/keypos_def/keypos_36keys.h"
+
 #include "combos.dtsi"  // requires layer aliases
 #include "mouse.dtsi"
 
@@ -17,11 +25,7 @@
 
 #define AS(keycode) &as LS(keycode) keycode
 
-#define QWERTY 0
-#define NUMNAV 1
-#define FANDM 2
-#define SYS 3
-#define STENO 4
+
 
 &gresc {
     keep-mods = <(MOD_LSFT|MOD_RSFT)>;
