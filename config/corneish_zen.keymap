@@ -12,6 +12,13 @@
 #define HM_TAPPING_TERM 200
 #define HM_TAPPING_TERM_FAST 200
 
+#define AS(keycode) &as LS(keycode) keycode
+
+#define QWERTY 0
+#define NUMNAV 1
+#define FANDM 2
+#define SYS 3
+#define STENO 4
 
 &gresc {
     keep-mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -59,13 +66,6 @@ ZMK_BEHAVIOR(num_dance, tap_dance,
     zmk,matrix_transform = &five_column_transform;
   };
 };
-
-#define AS(keycode) &as LS(keycode) keycode
-#define QWERTY 0
-#define NUMNAV 1
-#define FANDM 2
-#define SYS 3
-#define STENO 4
 
 / {
 
