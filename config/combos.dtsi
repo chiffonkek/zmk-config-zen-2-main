@@ -23,7 +23,7 @@
 /* Horizontal combos - left hand */
 ZMK_COMBO(esc,   &kp ESC,       LT3 LT2,     QWERTY NUMNAV, COMBO_TERM_FAST)
 // ZMK_COMBO(ret,   &kp RETURN,    LT2 LT1,     DEF NAV NUM, COMBO_TERM_FAST)
-ZMK_COMBO(mouse, &smart_mouse,  LT3 LT1,     DEF NAV NUM, COMBO_TERM_SLOW)
+ZMK_COMBO(mouse, &smart_mouse,  LT3 LT1,     QWERTY NUMNAV, COMBO_TERM_SLOW)
 
 ZMK_COMBO(tab,   &kp TAB,       LT4 LT3,     QWERTY NUMNAV, COMBO_TERM_SLOW)
 // ZMK_COMBO(repeat,HRC_REPEAT,    LM2 LM1,     DEF NAV NUM, COMBO_TERM_FAST)
