@@ -125,47 +125,27 @@ ZMK_BEHAVIOR(rpar_gt, mod_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
+ZMK_BEHAVIOR(tdcb, tap_dance,
+    tapping-term-ms = <170>;
+    bindings = <&as LS(COMMA) COMMA>, <&as LS(BSLH) BSLH>;
+)
+
+ZMK_BEHAVIOR(tdds, tap_dance,
+    tapping-term-ms = <170>;
+    bindings = <&as LS(DOT) DOT>, <&as LS(FSLH) FSLH>;
+)
+
+ZMK_BEHAVIOR(tdqs, tap_dance,
+    tapping-term-ms = <170>;
+    bindings = <&as LS(APOS) APOS>, <&as LS(SEMI) SEMI>;
+)
+
 // misc aliases
 #define CANCEL &kp K_CANCEL             // cancel caps-word, num-word and smart-mouse
 #define MIN MINUS
 
-/ {
-  chosen {
-    //zmk,matrix_transform = &default_transform;
-    zmk,matrix_transform = &five_column_transform;
-  };
-};
-
-/ {
-
-    behaviors {
-
-        tdcb: Comma-Backslash {
-                compatible = "zmk,behavior-tap-dance";
-                label = "Tap Dance Comma Backslash";
-                #binding-cells = <0>;
-                tapping-term-ms = <170>;
-                bindings = <&as LS(COMMA) COMMA>, <&as LS(BSLH) BSLH>;
-            };
-        tdds: Dot-Slash {
-                compatible = "zmk,behavior-tap-dance";
-                label = "Tap Dance Dot Slash";
-                #binding-cells = <0>;
-                tapping-term-ms = <170>;
-                bindings = <&as LS(DOT) DOT>, <&as LS(FSLH) FSLH>;
-            };
-        tdqs: Quote-Semicolon {
-                compatible = "zmk,behavior-tap-dance";
-                label = "Tap Dance Quote Semicolon";
-                #binding-cells = <0>;
-                tapping-term-ms = <170>;
-                bindings = <&as LS(APOS) APOS>, <&as LS(SEMI) SEMI>;
-            };
-        };
-
 /* Keymap */        
 
-keymap {
 ZMK_LAYER(QWERTY,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
           &kp Q         &kp W         &kp E         &kp R         &kp T             &kp Y         &kp U         &kp I         &kp O         &kp P
@@ -236,5 +216,6 @@ ZMK_LAYER(mouse,
                                       ___           ___           ___               U_BTN2        U_BTN1                                           
     //                              ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯                      
 )
-};
-};
+
+/* use 5-column layout for Zen */
+/ { chosen { zmk,matrix_transform = &five_column_transform; }; };
