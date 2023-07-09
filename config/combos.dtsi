@@ -28,7 +28,7 @@ ZMK_COMBO(mouse, &smart_mouse,  LT3 LT1,     QWERTY NUMNAV, COMBO_TERM_SLOW)
 ZMK_COMBO(undo,  &kp LC(Z),     LB4 LB3,     QWERTY NUMNAV, COMBO_TERM_SLOW)
 ZMK_COMBO(cut,   &kp LC(X),     LB3 LB2,     QWERTY NUMNAV, COMBO_TERM_SLOW)
 ZMK_COMBO(copy,  &kp LC(C),     LB2 LB1,     QWERTY NUMNAV, COMBO_TERM_FAST)
-ZMK_COMBO(paste, &kp LS(V),     LB1 LB0,     QWERTY NUMNAV, COMBO_TERM_FAST)
+ZMK_COMBO(paste, &kp LC(V),     LB1 LB0,     QWERTY NUMNAV, COMBO_TERM_FAST)
 
 ZMK_COMBO(LYR1,  &to 1,         LH2 LH1,               ALL, COMBO_TERM_FAST)
 ZMK_COMBO(LYR2,  &to 2,         LH2 LH0,               ALL, COMBO_TERM_FAST)
@@ -71,9 +71,9 @@ ZMK_COMBO(fslh,  &kp FSLH,      RM2 RB2,     QWERTY NUMNAV, COMBO_TERM_SLOW)
 ZMK_COMBO(rpar,  &kp RPAR,      RM3 RB3,     QWERTY NUMNAV, COMBO_TERM_SLOW)
 
 /* Diagonal combos - right hand */
-ZMK_COMBO(home,  &kp HOME,      RT2 RM1,      QWERTY NUMNAV, COMBO_TERM_FAST)
-ZMK_COMBO(end,   &kp END,       RT2 RM3,      QWERTY NUMNAV, COMBO_TERM_FAST)
-ZMK_COMBO(pgup,  &kp PG_UP,     RT2 RM1 RM3,  QWERTY NUMNAV, COMBO_TERM_FAST)
+ZMK_COMBO(home,  &kp HOME,      RT2 RM1,      QWERTY NUMNAV, COMBO_TERM_SLOW)
+ZMK_COMBO(end,   &kp END,       RT2 RM3,      QWERTY NUMNAV, COMBO_TERM_SLOW)
+ZMK_COMBO(pgup,  &kp PG_UP,     RT2 RM1 RM3,  QWERTY NUMNAV, COMBO_TERM_SLOW)
 
 /* Horizontal combos - cross hand */
 ZMK_COMBO(esc,  &kp CAPS,       LM1 RM1,      QWERTY, COMBO_TERM_FAST)
