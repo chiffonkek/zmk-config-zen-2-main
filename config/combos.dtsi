@@ -33,7 +33,7 @@ ZMK_COMBO(paste,  &kp LC(V),      LB1 LB0,         QWERTY NUMNAV, COMBO_TERM_FAS
 ZMK_COMBO(LYR1,   &to 1,          LH2 LH1,                   ALL, COMBO_TERM_FAST)
 ZMK_COMBO(LYR2,   &to 2,          LH2 LH0,                   ALL, COMBO_TERM_FAST)
 ZMK_COMBO(LYR3,   &to 3,          RH2 RH1 RH0,               ALL, COMBO_TERM_FAST)
-ZMK_COMBO(STENO,  &tog 4,         LH2 LH1 LH0,               ALL, COMBO_TERM_FAST)
+ZMK_COMBO(LYR4,   &tog 4,         LH2 LH1 LH0,               ALL, COMBO_TERM_FAST)
 
 /* Horizontal combos - right hand */
 ZMK_COMBO(bspc,   &kp BSPC,       RT3 RT4,        QWERTY NUMNAV, COMBO_TERM_FAST)
