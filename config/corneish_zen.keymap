@@ -4,12 +4,12 @@
 #include <dt-bindings/zmk/outputs.h>
 #include "../zmk-nodefree-config/helper.h"
 
-// #define _QWERTY 0
-// #define _NUMNAV 1
-// #define _FN 2
-// #define _SYS 3
-// #define _STENO 4
-// #define _MOUSE 5
+#define QWERTY 0
+#define NUMNAV 1
+#define FN 2
+#define SYS 3
+#define STENO 4
+#define MOUSE 5
 
 #include "../../zmk-nodefree-config/keypos_def/keypos_36keys.h"
 #include "combos.dtsi"  // requires layer aliases
@@ -73,7 +73,7 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
 };
 
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
-#define SMART_NUM &smart_num 1 0
+#define SMART_NUM &smart_num NUMNAV QWERTY
 ZMK_BEHAVIOR(smart_num, hold_tap,
     flavor = "balanced";
     tapping-term-ms = <200>;
@@ -82,18 +82,18 @@ ZMK_BEHAVIOR(smart_num, hold_tap,
 )
 ZMK_BEHAVIOR(num_dance, tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&num_word>, <&sl 1>;  // reverse this for sticky-num on single tap
+    bindings = <&num_word>, <&sl NUMNAV>;  // reverse this for sticky-num on single tap
 )
 &num_word {  // num-word, requires PR #1451
-    layers = <1>;
+    layers = <NUMNAV>;
     continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL UP DOWN LEFT RIGHT>;
 };
 
 // smart-mouse, requires PR #1366
 ZMK_BEHAVIOR(smart_mouse, tri_state,
-    bindings = <&tog 5>, <&none>, <&tog 5>;
+    bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
     ignored-key-positions = <LT1 LT3 RT1 RT2 RT3 RM1 RM2 RM3 RH0 RH1>;
-    ignored-layers = <5>;
+    ignored-layers = <MOUSE>;
 )
 
 /* Custom behaviors */
@@ -194,7 +194,7 @@ ZMK_LAYER(SYS,
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
-ZMK_LAYER(STEMO,
+ZMK_LAYER(STENO,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
           &kp PLV_NM    &kp PLV_TL    &kp PLV_PL    &kp PLV_HL    &kp PLV_ST        &kp PLV_FR    &kp PLV_PR    &kp PLV_LR    &kp PLV_TR    &kp PLV_DR
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
