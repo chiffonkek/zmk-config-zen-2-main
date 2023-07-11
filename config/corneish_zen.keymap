@@ -73,7 +73,7 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
 };
 
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
-#define SMART_NUM &smart_num NUMNAV 0
+#define SMART_NUM &smart_num 1 0
 ZMK_BEHAVIOR(smart_num, hold_tap,
     flavor = "balanced";
     tapping-term-ms = <200>;
@@ -82,18 +82,18 @@ ZMK_BEHAVIOR(smart_num, hold_tap,
 )
 ZMK_BEHAVIOR(num_dance, tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&num_word>, <&sl NUMNAV>;  // reverse this for sticky-num on single tap
+    bindings = <&num_word>, <&sl 1>;  // reverse this for sticky-num on single tap
 )
 &num_word {  // num-word, requires PR #1451
-    layers = <NUMNAV>;
+    layers = <1>;
     continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL UP DOWN LEFT RIGHT>;
 };
 
 // smart-mouse, requires PR #1366
 ZMK_BEHAVIOR(smart_mouse, tri_state,
-    bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
+    bindings = <&tog 5>, <&none>, <&tog 5>;
     ignored-key-positions = <LT1 LT3 RT1 RT2 RT3 RM1 RM2 RM3 RH0 RH1>;
-    ignored-layers = <MOUSE>;
+    ignored-layers = <5>;
 )
 
 /* Custom behaviors */
@@ -154,7 +154,7 @@ ZMK_LAYER(QWERTY,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &kp Z         &kp X         &kp C         &kp V         &kp B             &kp N         &kp M         &tdcb         &tdds         &tdqs
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                                      &to QWERTY         &lt FN RET     &lt NUMNAV SPC         SMART_NUM     &smart_shft   &mo SYS
+                                      &to 0         &lt 2 RET     &lt 1 SPC         SMART_NUM     &smart_shft   &mo 3
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
@@ -166,7 +166,7 @@ ZMK_LAYER(NUMNAV,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           AS(N1)        AS(N2)       AS(N3)        AS(EQUAL)       ___              &kp DEL       &kp M           ___              ___            ___
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                                      ___          ___             ___              ___           CANCEL          &to QWERTY
+                                      ___          ___             ___              ___           CANCEL          &to 0
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
@@ -178,7 +178,7 @@ ZMK_LAYER(FN,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &kp F1        &kp F2       &kp F3        &kp F10        &sk LSHIFT        &sk LC(LS(LA(LGUI)))  ___   ___           ___           ___
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                                     &to QWERTY         ___            ___               ___                   ___   &to QWERTY
+                                     &to 0         ___            ___               ___                   ___   &to 0
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
@@ -190,7 +190,7 @@ ZMK_LAYER(SYS,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  ___           ___               &none         &none         &kp C_BRI_DN  &none         &kp C_BRI_UP 
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                                      &to QWERTY         ___           ___               ___           ___           &to QWERTY
+                                      &to 0         ___           ___               ___           ___           &to 0
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
