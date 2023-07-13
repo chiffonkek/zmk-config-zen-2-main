@@ -104,11 +104,11 @@ ZMK_BEHAVIOR(swapper1, tri_state,
     ignored-key-positions = <LT0>;
 )
 
-/* // Alt+Shift language swapper, requires PR #1366
+// Alt+Shift language swapper, requires PR #1366
 ZMK_BEHAVIOR(swapper2, tri_state,
-    bindings = <&kt LALT>, <&kp SHIFT>, <&kt LALT>;
+    bindings = <&kt LALT>, <&kp LSHFT>, <&kt LALT>;
     ignored-key-positions = <LM0>;
-) */
+)
 
 // Autoshift keys
 ZMK_BEHAVIOR(as, hold_tap,
@@ -180,7 +180,7 @@ ZMK_LAYER(FUNC,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
           &kp F7        &kp F8       &kp F9        &kp F12        &swapper1         &sk LGUI              ___   ___           ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          &hml LGUI F4  &hml LALT F5 &hml LCTRL F6 &hml LSHFT F11 ___         &sk LC(LS(LALT))      ___   ___           ___           ___
+          &hml LGUI F4  &hml LALT F5 &hml LCTRL F6 &hml LSHFT F11 &swapper2         &sk LC(LS(LALT))      ___   ___           ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &kp F1        &kp F2       &kp F3        &kp F10        &sk LSHIFT        &sk LC(LS(LA(LGUI)))  ___   ___           ___           ___
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
