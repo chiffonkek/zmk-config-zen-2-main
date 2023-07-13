@@ -100,7 +100,13 @@ ZMK_BEHAVIOR(smart_mouse, tri_state,
 
 // Alt+Tab swapper, requires PR #1366
 ZMK_BEHAVIOR(swapper, tri_state,
-    bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+    bindings = <&kt LALT>, <&kp LSHFT>, <&kt LALT>;
+    ignored-key-positions = <LT1>;
+)
+
+// Alt+Shift language swapper, requires PR #1366
+ZMK_BEHAVIOR(swapper, tri_state,
+    bindings = <&kt LALT>, <&kp SHIFT>, <&kt LALT>;
     ignored-key-positions = <LT0>;
 )
 
