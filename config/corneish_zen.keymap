@@ -131,20 +131,6 @@ ZMK_BEHAVIOR(rpar_gt, mod_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
-ZMK_BEHAVIOR(tdcb, tap_dance,
-    tapping-term-ms = <170>;
-    bindings = <&as LS(COMMA) COMMA>, <&as LS(BSLH) BSLH>;
-)
-
-ZMK_BEHAVIOR(tdds, tap_dance,
-    tapping-term-ms = <170>;
-    bindings = <&as LS(DOT) DOT>, <&as LS(FSLH) FSLH>;
-)
-
-ZMK_BEHAVIOR(tdqs, tap_dance,
-    tapping-term-ms = <170>;
-    bindings = <&as LS(APOS) APOS>, <&as LS(SEMI) SEMI>;
-)
 
 // misc aliases
 #define CANCEL &kp K_CANCEL             // cancel caps-word, num-word and smart-mouse
@@ -158,7 +144,7 @@ ZMK_LAYER(BASE,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &hml LGUI A   &hml LALT S   &hml LCTRL D  &hml LSHFT F  &kp G             &kp H         &hmr RSHFT J  &hmr RCTRL K  &hmr RALT L   &hmr RGUI SEMI
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          &kp Z         &kp X         &kp C         &kp V         &kp B             &kp N         &kp M         &tdcb         &tdds         &tdqs
+          &kp Z         &kp X         &kp C         &kp V         &kp B             &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
                                       &to 0         &lt 2 RET     &lt 1 SPC         SMART_NUM     &smart_shft   &mo 3
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
