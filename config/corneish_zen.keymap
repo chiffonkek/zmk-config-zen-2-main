@@ -2,7 +2,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-#include "../zmk-nodefree-config/helper.h"
+#include "../../zmk-nodefree-config/helper.h"
 
 #define QWERTY 0
 #define NUMNAV 1
@@ -11,7 +11,7 @@
 #define STENO 4
 #define MOUSE 5
 
-#include "../../zmk-nodefree-config/keypos_def/keypos_36keys.h"
+#include "../../../zmk-nodefree-config/keypos_def/keypos_36keys.h"
 #include "combos.dtsi"  // requires layer aliases
 #include "mouse.dtsi"
 
@@ -20,7 +20,7 @@
 
 /* Global settings */
 
-#define AS(keycode) &as LS(keycode) keycode
+// #define AS(keycode) &as LS(keycode) keycode
 #define QUICK_TAP_MS 175
 
 &sk {  // sticky-key config
@@ -110,25 +110,16 @@ ZMK_BEHAVIOR(swapper2, tri_state,
     ignored-key-positions = <LM0>;
 )
 
-// tap: comma | shift + tap: semicolon | ctrl + shift + tap: <
+// tap: comma | shift + tap: semicolon
 ZMK_BEHAVIOR(comma_morph, mod_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
-    bindings = <&kp COMMA>, <&comma_inner_morph>;
+    bindings = <&kp COMMA>, <&kp SEMICOLON>;
 )
 
-ZMK_BEHAVIOR(comma_inner_morph, mod_morph,
-    bindings = <&kp SEMICOLON>, <&kp LESS_THAN>;
-    mods = <(MOD_LCTL|MOD_RCTL)>;
-)
-
-// tap: dot | shift + tap: colon | ctrl + shift + tap: >
+// tap: dot | shift + tap: colon 
 ZMK_BEHAVIOR(dot_morph, mod_morph,
-    bindings = <&kp DOT>, <&dot_inner_morph>;
+    bindings = <&kp DOT>, <&kp COLON>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
-)
-ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
-    bindings = <&kp COLON>, <&kp GREATER_THAN>;
-    mods = <(MOD_LCTL|MOD_RCTL)>;
 )
 
 // tap: qmark | shift + tap: excl
@@ -154,15 +145,6 @@ ZMK_BEHAVIOR(dot_spc, macro,
     bindings = <&kp DOT &kp SPACE &sk LSHFT>;
 )
 
-// Autoshift keys
-ZMK_BEHAVIOR(as, hold_tap,
-    tapping_term_ms = <135>;
-    global-quick-tap-ms = <75>;
-    quick_tap_ms = <0>;
-    flavor = "tap-preferred";
-    bindings = <&kp>, <&kp>;
-    )
-
 // tap: left-parenthesis | shft + tap: less-than
 ZMK_BEHAVIOR(lpar_lt, mod_morph,
     bindings = <&kp LPAR>, <&kp LT>;
@@ -174,7 +156,6 @@ ZMK_BEHAVIOR(rpar_gt, mod_morph,
     bindings = <&kp RPAR>, <&kp GT>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
-
 
 // misc aliases
 #define CANCEL &kp K_CANCEL             // cancel caps-word, num-word and smart-mouse
@@ -196,35 +177,35 @@ ZMK_LAYER(BASE,
 
 ZMK_LAYER(NUM-NAV,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-          AS(N7)        AS(N8)       AS(N9)        AS(N0)          ___              &kp HOME      &kp PG_UP       &kp UP          &kp PG_DN       &kp END
+          &kp N7        &kp N8       &kp N9        &kp N0         &kp LG(LC(LEFT))  ___           ___           &kp UP        ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          &hml LGUI N4  &hml LALT N5 &hml LCTRL N6 &hml LSHFT MIN  ___              &kp INS       &hmr RSHFT LEFT &hmr RCTRL DOWN &hmr RALT RIGHT ___
+          &hml LGUI N4  &hml LALT N5 &hml LCTRL N6 &hml LSHFT MIN &kp LG(LC(RIGHT)) ___           &hmr RSHFT LEFT &hmr RCTRL DOWN &hmr RALT RIGHT ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          AS(N1)        AS(N2)       AS(N3)        AS(EQUAL)       ___              &kp DEL       &kp M           ___              ___            ___
+          &kp N1        &kp N2       &kp N3        &kp EQUAL       ___              ___           ___           ___           ___           ___
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                                      ___          ___             ___              ___           CANCEL          &to 0
+                                      ___          ___             ___              ___           ___           CANCEL
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
 ZMK_LAYER(FUNC,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-          &kp F7        &kp F8       &kp F9        &kp F12        &swapper1         &sk LGUI              ___   ___           ___           ___
+          &kp F7        &kp F8       &kp F9        &kp F12        &sk LCTRL         &sk LGUI      ___           ___           ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          &hml LGUI F4  &hml LALT F5 &hml LCTRL F6 &hml LSHFT F11 &swapper2         &sk LC(LS(LALT))      ___   ___           ___           ___
+          &hml LGUI F4  &hml LALT F5 &hml LCTRL F6 &hml LSHFT F11 &sk LALT          &sk LC(LS(LALT)) ___        ___           ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &kp F1        &kp F2       &kp F3        &kp F10        &sk LSHIFT        &sk LC(LS(LA(LGUI)))  ___   ___           ___           ___
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                                     &to 0         ___            ___               ___                   ___   &to 0
+                                     &to 0         ___            ___               ___           ___           &to 0
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
 ZMK_LAYER(SYSTEM,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-          &bt BT_CLR    &sys_reset    &bootloader   ___           ___               &none         &none         &kp C_VOL_DN  &kp C_MUTE    &kp C_VOL_UP
+          &bt BT_CLR    ___           &sys_reset    ___           &bootloader       &none         &none         &kp C_VOL_DN  &kp C_MUTE    &kp C_VOL_UP
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          &bt BT_SEL 3  &bt BT_SEL 4  &out OUT_TOG  ___           ___               &none         &none         &kp C_PREV    &kp C_PP      &kp C_NEXT
+          ___           ___           &out OUT_TOG  ___           ___               &none         &none         &kp C_PREV    &kp C_PP      &kp C_NEXT
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  ___           ___               &none         &none         &kp C_BRI_DN  &none         &kp C_BRI_UP 
+          &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &none         &none         &kp C_BRI_DN  &none         &kp C_BRI_UP 
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
                                       &to 0         ___           ___               ___           ___           &to 0
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
@@ -249,9 +230,6 @@ ZMK_LAYER(MOOSE,
     //  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
           ___           ___           ___           ___           ___               ___           ___           ___           ___           ___         
     //  ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                      ___           ___           ___               U_BTN2        U_BTN1                                           
+                                      ___           ___           ___               U_BTN2        U_BTN1        CANCEL                                  
     //                              ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯                      
 )
-
-/* use 5-column layout for Zen */
-/ { chosen { zmk,matrix_transform = &five_column_transform; }; };
