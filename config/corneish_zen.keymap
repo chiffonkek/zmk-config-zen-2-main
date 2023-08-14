@@ -2,7 +2,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-#include "../../zmk-nodefree-config/helper.h"
+#include "../zmk-nodefree-config/helper.h"
 
 #define QWERTY 0
 #define NUMNAV 1
@@ -11,7 +11,7 @@
 #define STENO 4
 #define MOUSE 5
 
-#include "../../../zmk-nodefree-config/keypos_def/keypos_36keys.h"
+#include "../../zmk-nodefree-config/keypos_def/keypos_36keys.h"
 #include "combos.dtsi"  // requires layer aliases
 #include "mouse.dtsi"
 
@@ -19,8 +19,6 @@
 #define ___ &trans
 
 /* Global settings */
-
-// #define AS(keycode) &as LS(keycode) keycode
 #define QUICK_TAP_MS 175
 
 &sk {  // sticky-key config
