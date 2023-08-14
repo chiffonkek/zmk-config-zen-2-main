@@ -231,3 +231,6 @@ ZMK_LAYER(MOOSE,
                                       ___           ___           ___               U_BTN2        U_BTN1        CANCEL                                  
     //                              ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯                      
 )
+
+/* use 5-column layout for Zen */
+/ { chosen { zmk,matrix_transform = &five_column_transform; }; };
