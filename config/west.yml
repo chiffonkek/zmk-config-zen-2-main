@@ -11,7 +11,7 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk_caksoylar
+    - name: zmk
       remote: caksoylar
       revision: a55f26daef34c58ddc4cb997d2f8450b30f413df
       import: app/west.yml
