@@ -2,13 +2,21 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: caksoylar
+      url-base: https://github.com/caksoylar
     - name: urob
       url-base: https://github.com/urob
-    - name: k3d3
-      url-base: https://github.com/k3d3
   projects:
-    - name: zmk
-      remote: k3d3
+    - name: zmk_base
+      remote: zmkfirmware
+      revision: main
+      import: app/west.yml
+    - name: zmk_caksoylar
+      remote: caksoylar
+      revision: caksoylar/zen-v1+v2  # custom branch name
+      import: app/west.yml
+    - name: zmk_urob
+      remote: urob
       revision: main
       import: app/west.yml
   self:
