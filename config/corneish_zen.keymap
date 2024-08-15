@@ -167,13 +167,6 @@ ZMK_MACRO(dot_spc,
     bindings = <&kp DOT &kp SPACE &sk LSHFT>;
 )
 
-// tap: backspace | lshft + tap: delete | rshft + tap: shift-delete
-ZMK_MOD_MORPH(bs_del,
-    bindings = <&kp BSPC>, <&kp DEL>;
-    mods = <(MOD_LSFT|MOD_RSFT)>;
-    keep-mods = <MOD_LSFT>;
-)
-
 // tap: copy | double-tap: cut
 ZMK_TAP_DANCE(copy_cut,
     tapping-term-ms = <200>;
