@@ -79,10 +79,10 @@ ZMK_COMBO(pipe,  &rpar_gt,      RM3 RB3,     DEF FN NUM, COMBO_TERM_SLOW, COMBO_
 
 /* Diagonal combos - right hand */
 ZMK_COMBO(home,  &kp HOME,      RT2 RM1,     DEF FN NUM, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(end,   &kp END,       RT2 RM3,     DEF FN NUM, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(end,   &kp END,       RT2 RM3,     DEF FN NUM, COMBO_TERM_SLOW)
 
 /* Horizontal combos - cross hand */
-ZMK_COMBO(caps,  &kp CAPS,      LM1 RM1,     DEF FN NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(caps,  &kp CAPS,      LM1 RM1,     DEF       , COMBO_TERM_SLOW)
 
 /* Function combos - left hand */
 ZMK_COMBO(CF01,  &kp F1,        LH1 LB4,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
