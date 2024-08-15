@@ -63,46 +63,10 @@
 MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)  // left-hand HRMs
 MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
 
-// if HRM combo has more complex behaviors, then must use structure below (key_repeat is a stock behavior but lapr_lt and lpar_gt are custom):
+// if HRM combo has more complex behaviors (more than just a keypress), then must use structure below (key_repeat is a stock behavior but lapr_lt and lpar_gt are custom):
 // MAKE_HRM(hml_repeat, &kp, &key_repeat, KEYS_R THUMBS)  // used for HRM-combo
 // MAKE_HRM(hmr_lpar_lt, &kp, &lpar_lt, KEYS_L THUMBS)    // "    "   "   "
 // MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)    // "    "   "   "
-
-// long-tap action on hold, short-tap action on all interrupts
-#define MT_CORE \
-    flavor = "tap-preferred"; \
-    tapping-term-ms = <220>; \
-    quick-tap-ms = <220>; \
-    hold-trigger-key-positions = <0>;
-
-/* Nav cluster */
-
-// long-tap action on hold, short-tap action on all interrupts
-#define MT_CORE \
-    flavor = "tap-preferred"; \
-    tapping-term-ms = <220>; \
-    quick-tap-ms = <220>; \
-    hold-trigger-key-positions = <0>;
-
-&mt { MT_CORE };
-ZMK_HOLD_TAP(mt_home, bindings = <&masked_home>, <&kp>; MT_CORE)
-ZMK_HOLD_TAP(mt_end, bindings = <&masked_end>, <&kp>; MT_CORE)
-
-#define NAV_LEFT  &mt_home 0   LEFT    // tap: left  | long-tap: beginning of line
-#define NAV_RIGHT &mt_end 0    RIGHT   // tap: right | long-tap: end       of line
-#define NAV_UP    &mt LC(HOME) UP      // tap: up    | long-tap: beginning of document
-#define NAV_DOWN  &mt LC(END)  DOWN    // tap: down  | long-tap: end       of document
-#define NAV_BSPC  &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
-#define NAV_DEL   &mt LC(DEL)  DEL     // tap: del   | long-tap: delete word forward
-
-// mask CTRL when holding left/right to avoid accidental jumps to beginning/end of document
-#define MASK_MODS(NAME, MODS, BINDING) \
-    ZMK_MOD_MORPH(NAME, \
-        bindings = <BINDING>, <BINDING>; \
-        mods = <MODS>; \
-    )
-MASK_MODS(masked_home, (MOD_LCTL), &kp HOME)
-MASK_MODS(masked_end,  (MOD_LCTL), &kp END)
 
 /* Caps-word, num-word and smart-mouse */
 
@@ -244,7 +208,7 @@ ZMK_LAYER(BASE,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp Z         &kp X         &kp C         &kp V         &kp B           &kp N         &kp M         &comma_morph  &dot_morph    &qexcl
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                &to 0       &lt 1 RET       &lt_spc 2 0     SMART_NUM     &smart_shft   &lt K_CANCEL 3
+                                &to 0       &lt 1 RET       &lt_spc 2 0     SMART_NUM     &smart_shft   &mo 3
 //                            ╰─────────────┴─────────────┴─────────────╯ ╰─────────────┴─────────────┴─────────────╯    
 )
 
@@ -257,7 +221,7 @@ ZMK_LAYER(FUNC,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp F1       &kp F2        &kp F3        &kp F4        &sk LSHIFT        &sk HYPER      ___          &kp C_BRI_DN  &win_sleep    &kp C_BRI_UP  
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                &to 0        ___           ___               ___            ___          &to 0 
+                                &to 0        ___           ___               ___            ___          ___
 //                            ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯    
 )
 
@@ -281,7 +245,7 @@ ZMK_LAYER(SYST,
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &none         &none         &kp C_BRI_DN  &win_sleep    &kp C_BRI_UP 
 // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                                &to 0         ___           ___               ___           ___           CANCEL
+                                &to 0         ___           ___               ___           ___           ___
 //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
@@ -305,7 +269,7 @@ ZMK_LAYER(MOOSE,
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     ___           ___           ___           ___           ___               ___           &mkp MB4      &mkp MCLK      &mkp MB5     ___  
 // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                                &to 0         ___           ___               &mkp RCLK     &mkp LCLK     &to 0
+                                &to 0         ___           ___               &mkp RCLK     &mkp LCLK     CANCEL
 //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
