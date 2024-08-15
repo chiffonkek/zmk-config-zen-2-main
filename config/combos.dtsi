@@ -21,7 +21,7 @@
 // #define HRC_TAB    &hml         LS(LALT) TAB
 // #define HRC_LPAR   &hmr_lpar_lt RS(LCTRL) 0
 
-#define HRC_CAP    &hmr    LS(RSHFT)  CAPS
+#define HRC_CAP    &hml    LS(RSHFT)  CAPS
 #define HRC_RET    &hmr    RA(LGUI)   RET
 #define HRC_WRDL   &hmr    RS(LCTRL)  LC(LEFT)
 #define HRC_WRDR   &hmr    RC(LALT)   LC(RIGHT)
@@ -83,7 +83,7 @@ ZMK_COMBO(home,  &kp HOME,      RT2 RM1,     DEF FN NUM, COMBO_TERM_SLOW, COMBO_
 ZMK_COMBO(end,   &kp END,       RT2 RM3,     DEF FN NUM, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 
 /* Horizontal combos - cross hand */
-ZMK_COMBO(caps,  HRC_CAP,      LM1 RM1,     DEF       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(caps,  &kp CAPS,      RB3 RB4,     DEF       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 
 /* Function combos - left hand */
 ZMK_COMBO(CF01,  &kp F1,        LH1 LB4,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
