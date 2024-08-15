@@ -129,7 +129,7 @@ ZMK_TAP_DANCE(num_dance,
 )
 &num_word {  // num-word, requires PR #1451
     layers = <NUM>;
-    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
+    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL UP DOWN LEFT RIGHT>;
 };
 
 // smart-mouse, requires PR #1366
