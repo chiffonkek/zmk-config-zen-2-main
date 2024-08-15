@@ -171,7 +171,7 @@ ZMK_MACRO(dot_spc,
 ZMK_MOD_MORPH(bs_del,
     bindings = <&kp BSPC>, <&kp DEL>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
-    keep-mods = <MOD_RSFT>;
+    keep-mods = <MOD_LSFT>;
 )
 
 // tap: copy | double-tap: cut
