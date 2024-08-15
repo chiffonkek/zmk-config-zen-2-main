@@ -21,9 +21,10 @@
 // #define HRC_TAB    &hml         LS(LALT) TAB
 // #define HRC_LPAR   &hmr_lpar_lt RS(LCTRL) 0
 
-#define HRC_RET    &hmr    RA(LGUI)  RET
-#define HRC_WRDL   &hmr    RS(LCTRL) LC(LEFT)
-#define HRC_WRDR   &hmr    RC(LALT)  LC(RIGHT)
+#define HRC_CAP    &hmr    LS(RSHFT)  CAPS
+#define HRC_RET    &hmr    RA(LGUI)   RET
+#define HRC_WRDL   &hmr    RS(LCTRL)  LC(LEFT)
+#define HRC_WRDR   &hmr    RC(LALT)   LC(RIGHT)
 
 /* Horizontal combos - left hand */
 ZMK_COMBO(tab,   &kp TAB,       LT4 LT3,     DEF    NUM, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
@@ -85,15 +86,15 @@ ZMK_COMBO(end,   &kp END,       RT2 RM3,     DEF FN NUM, COMBO_TERM_SLOW, COMBO_
 ZMK_COMBO(caps,  &kp CAPS,      LM1 RM1,     DEF       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 
 /* Function combos - left hand */
-ZMK_COMBO(CF01,  &kp F1,        LH2 LB4,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(CF02,  &kp F2,        LH2 LB3,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(CF03,  &kp F3,        LH2 LB2,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(CF04,  &kp F4,        LH2 LM4,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(CF05,  &kp F5,        LH2 LM3,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(CF06,  &kp F6,        LH2 LM2,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(CF07,  &kp F7,        LH2 LT4,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(CF08,  &kp F8,        LH2 LT3,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(CF09,  &kp F9,        LH2 LT2,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(CF10,  &kp F10,       LH2 LB1,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(CF11,  &kp F11,       LH2 LM1,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(CF12,  &kp F12,       LH2 LT1,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(CF01,  &kp F1,        LH1 LB4,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(CF02,  &kp F2,        LH1 LB3,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(CF03,  &kp F3,        LH1 LB2,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(CF04,  &kp F4,        LH1 LM4,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(CF05,  &kp F5,        LH1 LM3,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(CF06,  &kp F6,        LH1 LM2,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(CF07,  &kp F7,        LH1 LT4,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(CF08,  &kp F8,        LH1 LT3,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(CF09,  &kp F9,        LH1 LT2,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(CF10,  &kp F10,       LH1 LB1,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(CF11,  &kp F11,       LH1 LM1,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(CF12,  &kp F12,       LH1 LT1,     DEF       , COMBO_TERM_FAST, COMBO_IDLE_FAST)
