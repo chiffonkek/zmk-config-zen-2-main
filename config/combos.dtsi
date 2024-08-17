@@ -26,6 +26,9 @@
 #define HRC_WRDL   &hmr    RS(LCTRL)  LC(LEFT)
 #define HRC_WRDR   &hmr    RC(LALT)   LC(RIGHT)
 
+#define DSK_PREV    &kp LG(LC(LEFT))             // previous desktop
+#define DSK_NEXT    &hmr LALT LG(LC(RIGHT))      // next     desktop
+
 /* Horizontal combos - left hand */
 ZMK_COMBO(tab,       &kp TAB,           LT4 LT3,     DEF    NUM, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 ZMK_COMBO(esc,       &kp ESC,           LT3 LT2,     DEF FN NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
