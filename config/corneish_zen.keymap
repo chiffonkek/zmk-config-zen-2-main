@@ -185,7 +185,7 @@ ZMK_MACRO(syslayer,
     tap-ms = <5>;
     bindings = <&macro_press &mo 1 &macro_press &mo 2>,
                <&macro_pause_for_release>,
-               <&macro_release &mo 1 &macro_press &mo 2>;
+               <&macro_release &mo 1 &macro_release &mo 2>;
 )
 
 // misc aliases
