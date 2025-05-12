@@ -14,7 +14,7 @@ manifest:
     - name: zmk-helpers
       remote: urob
       revision: main
-    - name: zmk
+    - name: zmk-k3d3
       remote: k3d3
       revision: main
       import: app/west.yml
