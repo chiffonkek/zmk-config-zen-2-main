@@ -4,8 +4,6 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: urob
       url-base: https://github.com/urob
-    - name: k3d3
-      url-base: https://github.com/k3d3
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -14,9 +12,5 @@ manifest:
     - name: zmk-helpers
       remote: urob
       revision: main
-    - name: zmk-k3d3
-      remote: k3d3
-      revision: main
-      import: app/west.yml
   self:
     path: config
