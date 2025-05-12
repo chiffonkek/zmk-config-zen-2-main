@@ -5,8 +5,6 @@
   #include <dt-bindings/zmk/outputs.h>
 
 #include "zmk-helpers/helper.h"
-#include "zmk-helpers/unicode-chars/greek.dtsi"
-#include "zmk-helpers/unicode-chars/german.dtsi"
 
 #define DEF 0
 #define NAV 1
@@ -265,4 +263,5 @@ ZMK_BASE_LAYER(Mouse,
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
-/* vim: set ft=c tw=146: */
+/* use 5-column layout for Zen */
+/ { chosen { zmk,matrix_transform = &five_column_transform; }; };
