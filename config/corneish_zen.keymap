@@ -8,6 +8,30 @@
 
 / { chosen { zmk,physical-layout = &foostan_corne_5col_layout; }; };
 
+#define XXX &none
+#define ___ &trans
+
+/* Global defaults */
+
+#define QUICK_TAP_MS 175
+
+&sk {
+  release-after-ms = <900>;
+  quick-release;
+};
+
+&sl { // Allow sticky mods to chord across sticky layers.
+  ignore-modifiers;
+};
+
+&lt {
+  flavor = "balanced";
+  tapping-term-ms = <200>;
+  quick-tap-ms = <QUICK_TAP_MS>;
+};
+
+// -------------------------------------------------------------------------- //
+
 / {
     keymap {
         compatible = "zmk,keymap";
