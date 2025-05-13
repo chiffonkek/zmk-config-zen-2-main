@@ -73,7 +73,4 @@ ZMK_COMBO(home,  &kp HOME,      RT2 RM1,           QWERTY NUMNAV, COMBO_TERM_SLO
 ZMK_COMBO(end,   &kp END,       RT2 RM3,           QWERTY NUMNAV, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 
 /* Horizontal combos - cross hand */
-ZMK_COMBO(caps,  &kp CAPS,      LM1 RM1,           QWERTY,         COMBO_TERM_FAST, COMBO_IDLE_FAST）
-
-
-ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
+ZMK_COMBO(caps,  &kp CAPS,      LM1 RM1,           QWERTY,         COMBO_TERM_FAST, COMBO_IDLE_FAST)
