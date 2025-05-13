@@ -8,6 +8,9 @@
 
 / { chosen { zmk,physical-layout = &foostan_corne_5col_layout; }; };
 
+#define QWERTY 0
+#define NUMNAV 1
+
 #define XXX &none
 #define ___ &trans
 
