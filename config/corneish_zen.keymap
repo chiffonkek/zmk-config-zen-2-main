@@ -187,10 +187,10 @@ ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;)
 
 // ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS) // FN + NUM --> SYS.
 
-#ifndef ZMK_BASE_LAYER
-  #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH)                 \
-      ZMK_LAYER(name, LT RT LM RM LB RB LH RH)
-#endif
+// #ifndef ZMK_BASE_LAYER
+//   #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH)                 \
+//       ZMK_LAYER(name, LT RT LM RM LB RB LH RH)
+// #endif
 
 /* use 5-column layout for Zen */
 /{ chosen { zmk,physical-layout = &foostan_corne_5col_layout; }; };
@@ -203,8 +203,8 @@ ZMK_BASE_LAYER(Base,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp Z         &kp X         &kp C         &kp D         &kp V       ,   &kp K         &kp H         &comma_morph  &dot_morph    &qexcl      ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                              &lt_spc NAV 0 &lt FN RET  ,   SMART_NUM     MAGIC_SHIFT
-//                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
+                                    XXX       &lt_spc NAV 0 &lt FN RET  ,   SMART_NUM     MAGIC_SHIFT      XXX
+//                            ╰─────────────┴─────────────┴─────────────╯ ╰─────────────┴─────────────┴─────────────╯
 )
 
 // ZMK_BASE_LAYER(Nav,
