@@ -195,7 +195,7 @@ ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;)
 /* use 5-column layout for Zen */
 /{ chosen { zmk,physical-layout = &foostan_corne_5col_layout; }; };
 
-ZMK_BASE_LAYER(Base,
+ZMK_LAYER(Base,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &kp Q         &kp W         &kp F         &kp P         &kp B       ,   &kp J         &kp L         &kp U         &kp Y         &kp SQT     ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
