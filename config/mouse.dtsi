@@ -42,11 +42,11 @@
 
 &msc_input_listener {
   warp {
-    layers = <NAV>;
+    layers = <DEF>;
     input-processors = <&zip_scroll_scaler 2 1>;
   };
   precision {
-    layers = <FN>;
+    layers = <DEF>;
     input-processors = <&zip_scroll_scaler 1 2>;
   };
 };
