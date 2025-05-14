@@ -10,6 +10,7 @@
 
 #define QWERTY 0
 #define NUMNAV 1
+#define MOUSE 4
 
 #define XXX &none
 #define ___ &trans
