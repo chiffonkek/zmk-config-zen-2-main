@@ -14,6 +14,7 @@
 
 #define XXX &none
 #define ___ &trans
+#define COM_C &kp C
 
 /* Global defaults */
 
