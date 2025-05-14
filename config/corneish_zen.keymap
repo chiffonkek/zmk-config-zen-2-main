@@ -124,7 +124,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUMNAV>, <&sl NUMNAV>;
 
 // -------------------------------------------------------------------------- //
 
-ZMK_CONDITIONAL_LAYER(DEF, DEF NUM, NUM) // FN + NUM --> SYS.
+ZMK_CONDITIONAL_LAYER(QWERTY, QWERTY NUMNAV, NUMNAV) // FN + NUM --> SYS.
 
 #ifndef ZMK_BASE_LAYER
   #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH)                 \
