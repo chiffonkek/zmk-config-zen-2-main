@@ -19,3 +19,6 @@
 
 /* Horizontal combos - left hand */
 ZMK_COMBO(tab,    &kp TAB,        LT4 LT3,         QWERTY NUMNAV, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(esc,    &kp ESC,        LT3 LT2,         QWERTY NUMNAV, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(mouse,  &smart_mouse,   LT3 LT1,         QWERTY NUMNAV, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(shift,  &kp LSHFT,      LM4 LM3,         QWERTY NUMNAV, COMBO_TERM_FAST, COMBO_IDLE_FAST, LG(LALT), KEYS_R)
