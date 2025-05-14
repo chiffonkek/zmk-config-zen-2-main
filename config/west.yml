@@ -4,6 +4,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: urob
       url-base: https://github.com/urob
+    - name: dhruvinsh
+      url-base: https://github.com/dhruvinsh
   projects:
     - name: zmk
       remote: urob
@@ -21,5 +23,8 @@ manifest:
     - name: zmk-adaptive-key
       remote: urob
       revision: v0.2 # set to same as ZMK version above
+    - name: zmk-tri-state
+      remote: dhruvinsh
+      revision: main
   self:
     path: config
