@@ -133,8 +133,12 @@ ZMK_TRI_STATE(
 /* Custom behaviors */
 
 // Alt+Tab swapper, requires tri-state module.
-ZMK_TRI_STATE(swapper, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
-              ignored-key-positions = <LT2 RT2 RM1 RM2 RM3>;)
+ZMK_TRI_STATE(swapper1, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+              ignored-key-positions = <LT2 RT2 RT3 RM1 RM2 RM3>;)
+
+// Alt+Shift language swapper, requires tri-state module.
+ZMK_TRI_STATE(swapper2, bindings = <&kt LALT>, <&kp LSHFT>, <&kt LALT>;
+              ignored-key-positions = <LT2 RT2 RT3 RT4 RM1 RM2 RM3 RM4>;)
 
 // Define mod-morph with a *single* mod trigger for less repetition.
 #define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
