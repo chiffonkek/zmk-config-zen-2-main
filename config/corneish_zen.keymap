@@ -153,10 +153,6 @@ SIMPLE_MORPH(comma_inner_morph, CTL, &kp SEMICOLON, &kp LESS_THAN)
 SIMPLE_MORPH(dot_morph1, SFT, &kp DOT, &dot_inner_morph1)
 SIMPLE_MORPH(dot_inner_morph1, CTL, &kp COLON, &kp GREATER_THAN)
 
-// Tap: dot | Shift + tap: comma | Ctrl + shift + tap: NONE.
-SIMPLE_MORPH(dot_morph2, SFT, &kp DOT, &dot_inner_morph2)
-SIMPLE_MORPH(dot_inner_morph2, CTL, &kp COMMA, &kp K_CANCEL)
-
 // Tap: qmark | Shift + tap: excl.
 SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
 
@@ -218,7 +214,7 @@ ZMK_LAYER(NUM-NAV,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
            &hml LGUI N4  &hml LALT N5 &hml LCTRL N6 &hml LSHFT MINUS) ___           ___           &hmr RSHFT LEFT &hmr RCTRL DOWN &hmr RALT RIGHT ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-         &kp N1        &kp N2       &kp N3        &dot_morph2       ___              ___           ___           ___           ___           ___
+         &kp N1        &kp N2       &kp N3        &dot_morph1       ___              ___           ___           ___           ___           ___
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
                                       ___          ___             ___              ___           ___           CANCEL
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
