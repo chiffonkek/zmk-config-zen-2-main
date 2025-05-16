@@ -8,8 +8,8 @@
 
 / { chosen { zmk,physical-layout = &foostan_corne_5col_layout; }; };
 
-#define QWERTY 0
-#define NUMNAV 1
+#define DEF 0
+#define NN 1
 #define FN 2
 #define SYS 3
 #define MOUSE 4
@@ -117,10 +117,10 @@ ZMK_ADAPTIVE_KEY(
 };
 
 // Tap: num-word | double-tap: sticky num-layer | Hold: num-layer.
-#define SMART_NUM &smart_num NUMNAV 0
+#define SMART_NUM &smart_num NN 0
 ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
              tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
-ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUMNAV>, <&sl NUMNAV>;
+ZMK_TAP_DANCE(num_dance, bindings = <&num_word NN>, <&sl NN>;
               tapping-term-ms = <200>;)
 
 // Smart-mouse, requires tri-state module.
@@ -128,7 +128,7 @@ ZMK_TRI_STATE(
     smart_mouse, bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
     ignored-key-positions =
         <LT1 LT2 LH0 LH1 RT1 RT2 RT3 RM0 RM1 RM2 RM3 RM4 RB1 RB2 RB3 RH0 RH1>;
-    ignored-layers = <MOUSE NUMNAV FN SYS>;)
+    ignored-layers = <MOUSE NN FN SYS>;)
 
 /* Custom behaviors */
 
@@ -189,7 +189,7 @@ ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;)
 
 // -------------------------------------------------------------------------- //
 
-ZMK_CONDITIONAL_LAYER(sys, NUMNAV FN, SYS) // NUMNAV + FN --> SYS.
+ZMK_CONDITIONAL_LAYER(sys, NN FN, SYS) // NN + FN --> SYS.
 
 #ifndef ZMK_BASE_LAYER
   #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH)                 \
@@ -204,7 +204,7 @@ ZMK_LAYER(BASE,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &kp Z         &kp X         &kp C         &kp V         &kp B             &kp N         &kp M         &comma_morph  &dot_morph    &qexcl
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                                      &to 0         &lt 2 RET     &lt_spc 1 0       SMART_NUM     MAGIC_SHIFT   &mo 3
+                                      &to DEF     &lt FN RET   &lt_spc NN 0  SMART_NUM     MAGIC_SHIFT   &mo SYS
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
