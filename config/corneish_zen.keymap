@@ -150,8 +150,12 @@ SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &comma_inner_morph)
 SIMPLE_MORPH(comma_inner_morph, CTL, &kp SEMICOLON, &kp LESS_THAN)
 
 // Tap: dot | Shift + tap: colon | Ctrl + shift + tap: >.
-SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &dot_inner_morph)
+SIMPLE_MORPH(dot_morph1, SFT, &kp DOT, &dot_inner_morph)
 SIMPLE_MORPH(dot_inner_morph, CTL, &kp COLON, &kp GREATER_THAN)
+
+// Tap: dot | Shift + tap: comma | Ctrl + shift + tap: NONE.
+SIMPLE_MORPH(dot_morph2, SFT, &kp DOT, &dot_inner_morph)
+SIMPLE_MORPH(dot_inner_morph, CTL, &kp COMMA, &kp K_CANCEL)
 
 // Tap: qmark | Shift + tap: excl.
 SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
@@ -202,7 +206,7 @@ ZMK_LAYER(BASE,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &hml LGUI A   &hml LALT S   &hml LCTRL D  &hml LSHFT F  &kp G             &kp H         &hmr RSHFT J  &hmr RCTRL K  &hmr RALT L   &hmr RGUI SQT
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          &kp Z         &kp X         &kp C         &kp V         &kp B             &kp N         &kp M         &comma_morph  &dot_morph    &qexcl
+          &kp Z         &kp X         &kp C         &kp V         &kp B             &kp N         &kp M         &comma_morph  &dot_morph1    &qexcl
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
                                       &to 0         &lt 2 RET     &lt_spc 1 0       SMART_NUM     MAGIC_SHIFT   &mo 3
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
@@ -210,11 +214,11 @@ ZMK_LAYER(BASE,
 
 ZMK_LAYER(NUM-NAV,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-          &kp N7        &kp N8       &kp N9        &kp N0         &kp LG(LC(LEFT))  ___           ___           &kp UP        ___           ___
+          &kp N7        &kp N8       &kp N9        &kp N0         ___              ___           ___           &kp UP        ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-           &hml LGUI N4  &hml LALT N5 &hml LCTRL N6 &hml LSHFT MINUS &kp LG(LC(RIGHT)) ___           &hmr RSHFT LEFT &hmr RCTRL DOWN &hmr RALT RIGHT ___
+           &hml LGUI N4  &hml LALT N5 &hml LCTRL N6 &hml LSHFT MINUS) ___           ___           &hmr RSHFT LEFT &hmr RCTRL DOWN &hmr RALT RIGHT ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-         &kp N1        &kp N2       &kp N3        &kp EQUAL       ___              ___           ___           ___           ___           ___
+         &kp N1        &kp N2       &kp N3        &dot_morph2       ___              ___           ___           ___           ___           ___
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
                                       ___          ___             ___              ___           ___           CANCEL
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
