@@ -154,8 +154,8 @@ SIMPLE_MORPH(dot_morph1, SFT, &kp DOT, &dot_inner_morph1)
 SIMPLE_MORPH(dot_inner_morph1, CTL, &kp COLON, &kp GREATER_THAN)
 
 // Tap: dot | Shift + tap: comma | Ctrl + shift + tap: NONE.
-SIMPLE_MORPH(dot_morph2, SFT, &kp DOT, &dot_inner_morph2)
-SIMPLE_MORPH(dot_inner_morph2, CTL, &kp COMMA, &kp K_CANCEL)
+SIMPLE_MORPH(dot_morph2, SFT, &kp DOT, &kp COMMA)
+// SIMPLE_MORPH(dot_inner_morph2, CTL, &kp COMMA, &kp K_CANCEL)
 
 // Tap: qmark | Shift + tap: excl.
 SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
