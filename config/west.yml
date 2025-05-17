@@ -7,23 +7,24 @@ manifest:
   projects:
     - name: zmk
       remote: urob
-      revision: main
+      revision: v0.2+fix-child-nodes
       import: app/west.yml
     - name: zmk-helpers
       remote: urob
       revision: main
     - name: zmk-auto-layer
       remote: urob
-      revision: main
+      revision: v0.2 # set to same version as zmk above
     - name: zmk-leader-key
       remote: urob
-      revision: main
+      revision: v0.2 # set to same as ZMK version above
     - name: zmk-adaptive-key
       remote: urob
-      revision: main
+      revision: v0.2 # set to same as ZMK version above
     - name: zmk-tri-state
       remote: urob
-      revision: main
+      revision: v0.2
   self:
     path: config
+
     
