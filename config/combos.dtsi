@@ -17,6 +17,9 @@
 // chording of mods. Custom hold-tap instances can be bootstrapped on the go using the
 // 8-argument version of ZMK_COMBO defined in base.keymap.
 
+/* Horizontal combos - cross hand */
+ZMK_COMBO(caps,   &kp CAPS,          LM1 RM1,          DEF,    COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+
 /* Horizontal combos - left hand */
 ZMK_COMBO(tab,    &kp TAB,           LT4 LT3,         DEF NN, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(esc,    &kp ESC,           LT3 LT2,         DEF NN, COMBO_TERM_FAST, COMBO_IDLE_FAST)
@@ -71,7 +74,4 @@ ZMK_COMBO(rpar,   &rpar_gt,          RM3 RB3,          DEF NN, COMBO_TERM_SLOW, 
 /* Diagonal combos - right hand */
 ZMK_COMBO(home,   &kp HOME,          RT2 RM1,          DEF NN, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 ZMK_COMBO(end,    &kp END,           RT2 RM3,          DEF NN, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-
-/* Horizontal combos - cross hand */
-ZMK_COMBO(caps,   &kp CAPS,          LM1 RM1,          DEF,    COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 
