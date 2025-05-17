@@ -175,10 +175,14 @@ ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
 ZMK_TAP_DANCE(copy_cut, bindings = <&kp LC(INS)>, <&kp LC(X)>;
               tapping-term-ms = <200>;)
 
+// Tap: Shift | double-tap: Capslock.
+ZMK_TAP_DANCE(Scaps, bindings = <&kp LSHFT>, <&kp CAPS>;
+              tapping-term-ms = <200>;)
+
 // Sticky shift + leader.
 ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;)
 
-// Misc aliases. [TODO: clean up]
+// Misc aliases.
 #define CANCEL    &kp K_CANCEL            // Cancel caps-word & auto-layers.
 #define MEH       &sk LC(LS(LALT))
 #define HYPER     &sk LC(LS(LA(LGUI)))
